@@ -29,7 +29,12 @@ fi
 # Update passwd.client
 passwd=/etc/exim4/passwd.client
 
-echo $EXIM_PASSWORD >> $passwd
+if [ -z "$EXIM_CHACHA20_KEY" ]
+then
+  echo $EXIM_PASSWORD >> $passwd
+else
+  echo -n $EXIM_PASSWORD | /usr/bin/openssl enc -pbkdf2 -iter 500000 -d -chacha20 -A -a -k "$EXIM_CHACHA20_KEY" >> $passwd
+fi
 
 update-exim4.conf
 

@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:buster
 
 MAINTAINER Ralph Soika <ralph.soika@imixs.com>
 # This dockerfile was inpired by greinacker/exim4
@@ -6,7 +6,7 @@ MAINTAINER Ralph Soika <ralph.soika@imixs.com>
 # install packages: exim4, mailutils
 RUN apt-get update \
  && apt-get install --no-install-recommends -y \
-  exim4-daemon-light mailutils xtail vim \
+  exim4-daemon-light mailutils xtail vim openssl \
  # Slim down image
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/man/?? /usr/share/man/??_*
