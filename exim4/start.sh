@@ -36,6 +36,8 @@ else
   echo -n $EXIM_PASSWORD | /usr/bin/openssl enc -pbkdf2 -iter 500000 -d -chacha20 -A -a -k "$EXIM_CHACHA20_KEY" >> $passwd
 fi
 
+echo 'disable_ipv6=true' >> /etc/exim4/exim4.conf.localmacros
+
 update-exim4.conf
 
 # Sort of hack to send logs to stdout
