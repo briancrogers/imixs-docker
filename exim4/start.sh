@@ -36,7 +36,8 @@ else
   echo -n $EXIM_PASSWORD | /usr/bin/openssl enc -pbkdf2 -iter 500000 -d -chacha20 -A -a -k "$EXIM_CHACHA20_KEY" >> $passwd
 fi
 
-echo 'disable_ipv6=true' >> /etc/exim4/exim4.conf.localmacros
+echo 'disable_ipv6 = true' >> /etc/exim4/exim4.conf.localmacros
+echo 'disable_ipv6 = true' >> /etc/exim4/conf.d/main/zzz_exim4-config_disable_ipv6
 
 update-exim4.conf
 
