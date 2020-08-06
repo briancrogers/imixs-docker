@@ -18,4 +18,7 @@ RUN chmod +x /exim_start
 ENV EXIM_LOCALINTERFACE=0.0.0.0
 ENV EXIM_ALLOWED_SENDERS=10.0.0.0/8:172.16.0.0/12:127.0.0.1:192.168.0.0/16
 
+# keep mail queue in a volume
+VOLUME /var/spool/exim4
+
 ENTRYPOINT ["/exim_start"]
